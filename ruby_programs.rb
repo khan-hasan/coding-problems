@@ -1,19 +1,4 @@
-########## 1 ##########
-# Coderbyte
-# Difficulty: Easy
-# https://coderbyte.com/results/khanhasan:First%20Factorial:Ruby
-# Have the function FirstFactorial(num) take the num parameter being passed and return the factorial of it (e.g. if num = 4, return (4 * 3 * 2 * 1)). For the test cases, the range will be between 1 and 18 and the input will always be an integer.
-def FirstFactorial(num)
-  product = 1
-  for x in num..1
-    product *= x
-  end
-  return product
-end
 
-# keep this function call here    
-puts FirstFactorial(STDIN.gets)
-#########################
 
 
 
@@ -40,26 +25,7 @@ puts SimpleAdding(STDIN.gets)
 
 
 
-########## 3 ##########
-# Coderbyte
-# Difficulty: Easy
-# Tags: string manipulation, searching
-# https://coderbyte.com/editor/Longest%20Word:Ruby
-# Using the Ruby language, have the function LongestWord(sen) take the sen parameter being passed and return the largest word in the string. If there are two or more words that are the same length, return the first word from the string with that length. Ignore punctuation and assume sen will not be empty. 
-def LongestWord(sen)
-  arr = sen.split(' ')
-  longest = arr[0]
-  arr.each do |word|
-    if word.length > longest.length
-      longest = word
-    end
-  end
-  return longest
-end
-   
-# keep this function call here    
-puts LongestWord(STDIN.gets)  
-#########################
+
 
 
 
