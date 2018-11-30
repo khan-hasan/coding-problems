@@ -25,7 +25,10 @@ public static class Kata
 {
   public static string HighAndLow(string numbers)
   {
+    var parsed = numbers.Split().Select(int.Parse); 
+    return parsed.Max() + " " + parsed.Min();
 
+  /*
     if (numbers.Length == 1)
     {
       return numbers[0].ToString();
@@ -60,6 +63,7 @@ public static class Kata
     string returnString = highest.ToString() + " " + lowest.ToString();
     return returnString;
   }
+  */
 }
 
 /**************************************************/
