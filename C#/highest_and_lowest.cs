@@ -28,7 +28,7 @@ public static class Kata
 
     if (numbers.Length == 1)
     {
-      return numbers.ToString();
+      return numbers[0].ToString();
     }
 
     int highest, lowest;
