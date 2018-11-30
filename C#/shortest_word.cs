@@ -12,12 +12,12 @@ public class Kata
 {
   public static int FindShort(string s)
   {
-    string[] words = string.Split(" ");
+    string[] words = s.Split(" ");
     string shortest = words[0];
 
     foreach (string word in words)
     {
-        if (word.Length < words[0].Length)
+        if (word.Length < shortest.Length)
         {
             shortest = word;
         } 
