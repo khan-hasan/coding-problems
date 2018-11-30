@@ -14,16 +14,29 @@ Input: 1254859723 Output: 9875543221
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public static class Kata
 {
   public static int DescendingOrder(int num)
   {
-    // Bust a move right here
-    return 0;
+    string[] numStrArr = num.ToString().Split("");
+    var numIntList = new List<int>();
+    string returnStr;
+
+    foreach (string numChar in numStrArr)
+    {
+      numIntList.Add(Int32.Parse(numChar));
+    }
+
+    do
+    {
+      returnStr += numIntList.Max().ToString();
+      numIntList.Remove(numIntList.Max());
+    } while (numIntList.Count > 0);
   }
 }
-
 
 /**************************************************/
 /**************************************************/
