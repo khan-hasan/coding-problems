@@ -25,6 +25,12 @@ public static class Kata
 {
   public static string HighAndLow(string numbers)
   {
+
+    if (numbers.Length == 1)
+    {
+      return numbers.ToString();
+    }
+
     int highest, lowest;
     string[] numbersArr = numbers.Split(" ");
     
