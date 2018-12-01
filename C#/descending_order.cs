@@ -19,23 +19,31 @@ using System.Linq;
 
 public static class Kata
 {
-  public static int DescendingOrder(int num)
-  {
-    string[] numStrArr = num.ToString().Split("");
-    var numIntList = new List<int>();
-    string returnStr;
-
-    foreach (string numChar in numStrArr)
+    public static int DescendingOrder(int num)
     {
-      numIntList.Add(Int32.Parse(numChar));
+        string[] numStrArr = num.ToString().Split("");
+        var numIntList = new List<int>();
+        string returnStr = "";
+
+        foreach (string numChar in numStrArr)
+        {
+            numIntList.Add(Int32.Parse(numChar));
+        }
+
+        do
+        {
+            Console.WriteLine("numIntList = " + String.Join("", numIntList.ToArray()));
+
+            returnStr += numIntList.Max().ToString();
+            numIntList.Remove(numIntList.Max());
+
+            Console.WriteLine("numIntList = " + String.Join("", numIntList.ToArray()));
+        } while (numIntList.Count > 0);
+
+        Console.WriteLine("returnStr = " + returnStr);
+        //return Int32.Parse(String.Join("", Array.Reverse(returnStr.Split(""))));
+        return 0;
     }
-
-    do
-    {
-      returnStr += numIntList.Max().ToString();
-      numIntList.Remove(numIntList.Max());
-    } while (numIntList.Count > 0);
-  }
 }
 
 /**************************************************/
@@ -47,9 +55,9 @@ public static class Kata
 [TestFixture]
 public class Tests
 {
-  [Test]
-  public void Test0()
-  {
-    Assert.AreEqual(0, Kata.DescendingOrder(0));
-  }  
+    [Test]
+    public void Test0()
+    {
+        Assert.AreEqual(0, Kata.DescendingOrder(0));
+    }
 }
