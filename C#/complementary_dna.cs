@@ -16,11 +16,12 @@ MakeComplement("ATTGC") => "TAACG"
 MakeComplement("GTAT") => "CATA"
 */
 
+using System;
 public class DnaStrand 
 {
     public static string MakeComplement(string dna)
     {
-        //Your code
+        
     }
 }
 
