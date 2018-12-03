@@ -21,28 +21,23 @@ public static class Kata
 {
     public static int DescendingOrder(int num)
     {
-        string[] numStrArr = num.ToString().Split("");
+        char[] numCharArr = num.ToString().ToCharArray();
         var numIntList = new List<int>();
         string returnStr = "";
 
-        foreach (string numChar in numStrArr)
+        foreach (char numChar in numCharArr)
         {
-            numIntList.Add(Int32.Parse(numChar));
+            numIntList.Add(Int32.Parse(numChar.ToString()));
         }
 
         do
         {
-            Console.WriteLine("numIntList = " + String.Join("", numIntList.ToArray()));
-
             returnStr += numIntList.Max().ToString();
             numIntList.Remove(numIntList.Max());
 
-            Console.WriteLine("numIntList = " + String.Join("", numIntList.ToArray()));
         } while (numIntList.Count > 0);
 
-        Console.WriteLine("returnStr = " + returnStr);
-        //return Int32.Parse(String.Join("", Array.Reverse(returnStr.Split(""))));
-        return 0;
+        return Int32.Parse(returnStr);
     }
 }
 
@@ -55,9 +50,9 @@ public static class Kata
 [TestFixture]
 public class Tests
 {
-    [Test]
-    public void Test0()
-    {
-        Assert.AreEqual(0, Kata.DescendingOrder(0));
-    }
+  [Test]
+  public void Test0()
+  {
+    Assert.AreEqual(1223455789, Kata.DescendingOrder(1254859723));
+  }  
 }
