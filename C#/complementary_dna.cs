@@ -21,7 +21,33 @@ public class DnaStrand
 {
     public static string MakeComplement(string dna)
     {
-        
+        string complement = "";
+
+        foreach (char symbol in dna)
+        {
+            if (symbol == 'A')
+            {
+                complement += 'T';
+            }
+            else if (symbol == 'T')
+            {
+                complement += 'A';
+            }
+            else if (symbol == 'C')
+            {
+                complement += 'G';
+            }
+            else if (symbol == 'G')
+            {
+                complement += 'C';
+            }
+            else
+            {
+                complement += symbol;
+            }
+        }
+
+        return complement;
     }
 }
 
