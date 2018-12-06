@@ -22,7 +22,38 @@ public class Persist
 {
 	public static int Persistence(long n) 
 	{
-		// your code
+        string[] numbers = n.ToString().Split("");
+        int product = 1;
+        int counter = 0;
+
+        while (numbers.Length > 1)
+        {
+            Console.WriteLine("We are in the while loop. numbers.Length = " + 
+            numbers.Length.ToString());
+            
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine("We are in the for loop. i = " + i.ToString());
+
+                product *= Int32.Parse(numbers[i]);
+                counter += 1;
+
+                if (product < 10 && product > 0)
+                {
+                    Console.WriteLine("We are in the if statement. product = " + product.ToString());
+
+                    return counter;
+                }
+                else
+                {
+                    Console.WriteLine("We are in the else statement.");
+
+                    numbers = product.ToString().Split("");
+                    return -1;
+                }
+            }
+            return -1;
+        }
 	}
 }
 
