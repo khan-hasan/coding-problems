@@ -39,10 +39,32 @@ Good luck!
 After you complete this kata, you may try yourself at Decode the Morse code, advanced.
 */
 
+using System;
 class MorseCodeDecoder
 {
 	public static string Decode(string morseCode)
 	{
+		string[] morseWords = morseCode.Split("   ");
+		string translatedMorseCode = "";
+
+		// foreach (string s in morseWords)
+		// {
+		// 	Console.WriteLine(s);
+		// }
+
+		foreach (string word in morseWords)
+		{
+			string[] letters = word.Split(" ");
+			foreach (string letter in letters)
+			{
+				translatedMorseCode += MorseCode.Get(letter);
+			}
+			translatedMorseCode += " ";
+		}
+
+		translatedMorseCode = translatedMorseCode.Trim(' ');
+		
+		return translatedMorseCode;
 		throw new System.NotImplementedException("Please provide some code.");
 	}
 }
