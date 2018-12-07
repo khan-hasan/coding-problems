@@ -17,43 +17,47 @@ For example:
 */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Persist 
 {
-	public static int Persistence(long n) 
+	public static int Persistence(long n)
 	{
-        string[] numbers = n.ToString().Split("");
-        int product = 1;
-        int counter = 0;
+        List<char> numbers = new List<char>();
+        int oldProduct = 1;
+        int newProduct = 1;
+        List<char> productList = new List<char>();
 
-        while (numbers.Length > 1)
+        foreach (char num in n.ToString())
         {
-            Console.WriteLine("We are in the while loop. numbers.Length = " + 
-            numbers.Length.ToString());
-            
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                Console.WriteLine("We are in the for loop. i = " + i.ToString());
-
-                product *= Int32.Parse(numbers[i]);
-                counter += 1;
-
-                if (product < 10 && product > 0)
-                {
-                    Console.WriteLine("We are in the if statement. product = " + product.ToString());
-
-                    return counter;
-                }
-                else
-                {
-                    Console.WriteLine("We are in the else statement.");
-
-                    numbers = product.ToString().Split("");
-                    return -1;
-                }
-            }
-            return -1;
+            Console.WriteLine("We are in the foreach loop. num = " + num.ToString());
+            numbers.Add(num);
+            Console.WriteLine("numbers = " + String.Join("", numbers.ToArray()));
+            oldProduct *= Int32.Parse(num.ToString());
+            Console.WriteLine("oldProduct = " + oldProduct.ToString());
         }
+        int counter = 1;
+
+        while (oldProduct > 9)
+        {
+            Console.WriteLine("\nWe are in the while loop. oldProduct = " + oldProduct.ToString());
+            newProduct = oldProduct;
+            oldProduct = 1;
+            foreach (char number in newProduct.ToString())
+            {
+                Console.WriteLine(">>> We are in the inner foreach loop. number = " + number.ToString());
+                productList.Add(number);
+                oldProduct *= Int32.Parse(number.ToString());
+                // Console.WriteLine(">>> newProduct = " + newProduct.ToString());
+                Console.WriteLine(">>> newProduct = " + newProduct.ToString());
+                Console.WriteLine(">>> oldProduct = " + oldProduct.ToString());
+                // oldProduct = newProduct;
+            }
+            counter += 1;
+            Console.WriteLine("counter = " + counter.ToString());
+        }
+        return counter;
 	}
 }
 
