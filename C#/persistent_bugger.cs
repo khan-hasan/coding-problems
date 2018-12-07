@@ -25,37 +25,32 @@ public class Persist
 	public static int Persistence(long n)
 	{
         List<char> numbers = new List<char>();
+        List<char> productList = new List<char>();
         int oldProduct = 1;
         int newProduct = 1;
-        List<char> productList = new List<char>();
+
+        if (n < 9)
+        {
+            return 0;
+        }
 
         foreach (char num in n.ToString())
         {
-            Console.WriteLine("We are in the foreach loop. num = " + num.ToString());
             numbers.Add(num);
-            Console.WriteLine("numbers = " + String.Join("", numbers.ToArray()));
             oldProduct *= Int32.Parse(num.ToString());
-            Console.WriteLine("oldProduct = " + oldProduct.ToString());
         }
         int counter = 1;
 
         while (oldProduct > 9)
         {
-            Console.WriteLine("\nWe are in the while loop. oldProduct = " + oldProduct.ToString());
             newProduct = oldProduct;
             oldProduct = 1;
             foreach (char number in newProduct.ToString())
             {
-                Console.WriteLine(">>> We are in the inner foreach loop. number = " + number.ToString());
                 productList.Add(number);
                 oldProduct *= Int32.Parse(number.ToString());
-                // Console.WriteLine(">>> newProduct = " + newProduct.ToString());
-                Console.WriteLine(">>> newProduct = " + newProduct.ToString());
-                Console.WriteLine(">>> oldProduct = " + oldProduct.ToString());
-                // oldProduct = newProduct;
             }
             counter += 1;
-            Console.WriteLine("counter = " + counter.ToString());
         }
         return counter;
 	}
