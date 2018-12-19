@@ -46,7 +46,6 @@ public class RomanDecode
         if (roman.Length == 1)
         {
             return (int)romanKeys[roman.ToCharArray()[0]];
-
         }
         else
         {
@@ -60,21 +59,22 @@ public class RomanDecode
             // Loop over each numeral in romanChars
             for (int i = 0; i < romanChars.Length; i++)
             {
-                Console.WriteLine("\nWe are now inside the for loop, and i = " + i.ToString() + ".");
-
-                // If the numeral at the following index is less than the current numeral, subtract them, and add result to total
-                if ((int)romanKeys[romanChars[i + 1]] < (int)romanKeys[romanChars[i]])
+                if (i == romanChars.Length - 1)
                 {
-                    Console.WriteLine("We are inside the if statement.");
-                    total =+ ((int)romanKeys[romanChars[i]] - (int)romanKeys[romanChars[i + 1]]);
-                    Console.WriteLine("total = " + total.ToString());
-                    i += 1;
+                    total += ((int)romanKeys[romanChars[i]]);
                 }
                 else
                 {
-                    Console.WriteLine("We are inside the else statement.");
-                    total += ((int)romanKeys[romanChars[i]]);
-                    Console.WriteLine("total = " + total.ToString());
+                    // If the numeral at the following index is less than the current numeral, subtract them, and add result to total
+                    if ((int)romanKeys[romanChars[i + 1]] < (int)romanKeys[romanChars[i]])
+                    {
+                        total += ((int)romanKeys[romanChars[i]] - (int)romanKeys[romanChars[i + 1]]);
+                        i += 1;
+                    }
+                    else
+                    {
+                        total += ((int)romanKeys[romanChars[i]]);
+                    }
                 }
             }
             return total;
