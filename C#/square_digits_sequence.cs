@@ -50,13 +50,44 @@ Constraints: 1 ≤ a0 ≤ 650.
 namespace myjinxin
 {
     using System;
+    using System.Collections.Generic;
     
     public class Kata
     {
-        public int SquareDigitsSequence(int a0){
-          //coding and coding..
-          
-          
+        public int SquareDigitsSequence(int a0)
+        {
+            // current sum of a0's squared digits
+            int sumOfSquaredDigits = 0;
+            foreach (char digit in a0.ToString())
+            {
+                System.Console.WriteLine(Convert.ToInt32(Math.Pow(digit, 2)));
+                sumOfSquaredDigits += Convert.ToInt32(Math.Pow(digit, 2));
+            }
+            // int sumOfSquaredDigits = Math.Pow(a0.ToString().Split("")[0], 2) + Math.Pow(a0.ToString().Split("")[1], 2);
+            System.Console.WriteLine(sumOfSquaredDigits);
+
+            // list containing sequence of all previous sums of a0's successively square digits
+            List<int> previousSums = new List<int>();
+
+            // add the sum of a0's squared digits to sumOfSquaredDigits
+            previousSums.Add(sumOfSquaredDigits);
+
+            // get the sum of the squared digits of the last number in previous Sums and save in tempSum
+            var tempSum = 0;
+
+            // take the last number in previousSums list, and add the sum of its square digits to the end list
+            // stop looping when previousSums contains the sum already
+            do
+            {
+                // tempSum = Math.Pow(previousSums[previousSums.Count].ToString().Split()[0], 2) + Math.Pow(previousSums[previousSums.Count].ToString().Split()[1], 2);
+
+                // add tempSum to previousSums list
+                previousSums.Add(tempSum);
+            // check if previousSums contains tempSum already
+            } while (previousSums.Contains(tempSum) == false);
+
+            // return the size of previousSums list
+            return previousSums.Count;
         }
     }
 }
