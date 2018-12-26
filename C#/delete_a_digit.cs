@@ -23,11 +23,33 @@ PUZZLESGAMES
 namespace myjinxin
 {
     using System;
+    using System.Collections.Generic;
 
     public class Kata
     {
         public int DeleteDigit(int n)
         {
+            // convert n from int to string
+            string number = n.ToString();
+            // create array or list of string
+            List<string> num1 = new List<string> {};
+            // loop over each char in n
+            for (int i = 0; i < number.Length - 1; i++)
+            {
+                // create new temp str consisting of all char in str except for char at index
+                string tempStr = number.Remove(i, 1);            
+                // add each temp str to array or list
+                num1.Add(tempStr);
+            }
+            // create a second array or list of int
+            List<int> num2 = new List<int> {};
+            // loop over first array / list and convert each string element to int and add it to second array / list
+            foreach (string num in num1)
+            {
+                num2.Add(Int32.Parse(num));   
+            }
+            // return largest int from second array / list
+            return num2.Sort().Reverse()[0];
         }
     }
 }
