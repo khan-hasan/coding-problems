@@ -46,7 +46,7 @@ nba_cup(r0, "Atlanta Hawks") -> "Error(float number):New York Knicks 101.12 Atla
 
 using System;
 
-public class Nba 
+public class Nba
 {
     public static string NbaCup(string resultSheet, string toFind) 
     {
