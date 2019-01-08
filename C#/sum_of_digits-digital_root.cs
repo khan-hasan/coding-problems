@@ -42,30 +42,32 @@ public class Number
 {
     public int DigitalRoot(long n)
     {
-        string num = n.ToString();
-        System.Console.WriteLine(num[0]);
         List<int> digits = new List<int>();
-        foreach (char digit in num)
-        {
-            digits.add(Int32.Parse(digit.ToString()));
-        }
 
         int sum = 0;
-        while (digits.Length > 1)
+
+        foreach (char num in n.ToString())
         {
+            sum += Int32.Parse(num.ToString());
+            digits.Add(Int32.Parse(num.ToString()));
+        }
+
+        do
+        {
+            sum = 0;
+            
             foreach (int digit in digits)
             {
                 sum += digit;
             }
+            digits.Clear();
 
-            digits = new List<int>();
-            foreach (char numb in sum.ToString())
+            foreach (char num in sum.ToString())
             {
-                digits.add(Int32.Parse(numb.ToString()));
+                digits.Add(Int32.Parse(num.ToString()));
             }
-        }
-
-        return Int32.Parse(string.Join("", digits));
+        } while (digits.Count > 1);
+        return sum;  
     }
 }
 
