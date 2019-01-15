@@ -36,10 +36,27 @@ An empty array should be treated like a 0 in this problem.
 FUNDAMENTALS, ALGORITHMS, ARRAYS
 */
 
+using System;
+
 public class Kata
 {
     public static int FindEvenIndex(int[] arr)
     {
+        var firstHalfSum = 0;
+
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            var secondHalfSum = 0;
+
+            firstHalfSum += arr[i];
+
+            for (int j = i + 2; j < arr.Length; j++)
+                secondHalfSum += arr[j];
+
+            if (firstHalfSum == secondHalfSum)
+                return i + 1;
+        }
+        return -1;
     }
 }
 
