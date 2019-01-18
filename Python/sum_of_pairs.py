@@ -34,7 +34,21 @@ FUNDAMENTALS, PARSING, ALGORITHMS, STRINGS, MEMOIZATION, DESIGN PATTERNS, DESIGN
 '''
 
 def sum_pairs(ints, s):
-    
+    pairs = []
+
+    for i in range(0, len(ints)):
+        for j in range(i + 1, len(ints)):
+            if ints[i] + ints[j] == s:
+                pairs.append([j, ints[i], ints[j]])
+    if pairs == []:
+        return None
+
+    lowest_indices = [len(ints) * 2, -1, -1]
+
+    for pair in pairs:
+        if pair[0] < lowest_indices[0]:
+            lowest_indices = pair
+    return lowest_indices[1:]
 
 ###################################################
 ###################################################
