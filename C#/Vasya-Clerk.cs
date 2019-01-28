@@ -23,8 +23,51 @@ using System;
 public class Line
 {
     public static string Tickets(int[] peopleInLine)
-    { 
-        //Your code is here...
+    {
+        if (peopleInLine[0] != 25)
+            return "NO";
+
+        int hundreds = 0,
+            fiftys = 0,
+            twentyFives = 0;
+
+        foreach (var bill in peopleInLine)
+        {
+            switch (bill)
+            {
+                case 25:
+                    twentyFives += 1;
+                    break;
+                case 50:
+                    if (twentyFives >= 1)
+                    {
+                        twentyFives -= 1;
+                        fiftys += 1;
+                    }
+                    else
+                        return "NO";
+                    break;
+                case 100:
+                    if (twentyFives >= 2 && fiftys >= 1)
+                    {
+                        twentyFives -= 2;
+                        fiftys -= 1;
+                        hundreds += 1;
+                    }
+                    else if (twentyFives >= 3)
+                    {
+                        twentyFives -= 3;
+                        hundreds += 1;
+                    }
+                    else {
+                        return "NO";
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return "YES";
     }
 }
 
