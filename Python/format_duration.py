@@ -45,15 +45,6 @@ def format_duration(seconds: int) -> str:
     if not seconds:
         return 'now'
 
-    # TODO: Implement algorithm
-    #   1. Create a dict for time components and values
-    #      ex. {'years': 0, 'weeks': 2, ...}
-    #   2. Divide `seconds` by number of seconds in 1 unit of each key in dict and assign result as value in dict
-    #   3. Construct str using contents of dict.
-    #       - If 2+ counts, plural key
-    #       - If 1 count, singular key
-    #       - If 0 count, skip key
-
     time_components = {
         'years': 0,
         'days': 0,
@@ -62,38 +53,36 @@ def format_duration(seconds: int) -> str:
         'seconds': 0
     }
 
-    # TODO: Improve logic (DRY).
-    seconds_in_year = 60*60*24*365
-    years, seconds_remaining = divmod(seconds, seconds_in_year)
+    SEC_IN_YEAR = 60*60*24*365
+    years, seconds_remaining = divmod(seconds, SEC_IN_YEAR)
     time_components['years'] = years
     
-    seconds_in_day = 60*60*24
-    days, seconds_remaining = divmod(seconds_remaining, seconds_in_day)
+    SEC_IN_DAY = 60*60*24
+    days, seconds_remaining = divmod(seconds_remaining, SEC_IN_DAY)
     time_components['days'] = days
 
-    seconds_in_hour = 60*60
-    hours, seconds_remaining = divmod(seconds_remaining, seconds_in_hour)
+    SEC_IN_HOUR = 60*60
+    hours, seconds_remaining = divmod(seconds_remaining, SEC_IN_HOUR)
     time_components['hours'] = hours
 
-    seconds_in_minute = 60
-    minutes, seconds_remaining = divmod(seconds_remaining, seconds_in_minute)
+    SEC_IN_MINUTE = 60
+    minutes, seconds_remaining = divmod(seconds_remaining, SEC_IN_MINUTE)
     time_components['minutes'] = minutes
 
     time_components['seconds'] = seconds_remaining
 
-    # TODO: Improve this.
-    formatted_time = ''
+    formatted_times = []
     for time_component, value in time_components.items():
         if not value:
             continue
         if value == 1:
-            formatted_time += f'{value}, {time_component}, '[:-1]
+            formatted_times.append(f'{value} {time_component}'[:-1])
         else:
-            formatted_time += f'{value}, {time_component}, '
+            formatted_times.append(f'{value} {time_component}')
 
-    # TODO: Clean up formatted time str.
-    
-    return formatted_time
+    formatted_duration = ', '.join(formatted_times[:-1]) + f' and {formatted_times[-1]}'
+
+    return formatted_duration
 
 
-print(format_duration(3662))
+print(format_duration(62))
