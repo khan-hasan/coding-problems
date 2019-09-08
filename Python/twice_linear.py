@@ -26,5 +26,17 @@ ALGORITHMS, NUMBERS, MATHEMATICS
 """
 
 def dbl_linear(n):
-	# your code
-  pass
+    """
+    Return element u(n) of sequence u = 
+    [1, 3, 4, 7, 9, 10, 13, 15, 19, 21, 22, 27, ...]
+    """
+
+    u = [1]
+
+    for i in range(n):
+        for j in [2, 3]:
+            next_elem = u[i] * j + 1
+            if next_elem not in u:
+                u.append(next_elem)
+
+    return(sorted(u)[n])
