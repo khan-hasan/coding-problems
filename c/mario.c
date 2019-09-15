@@ -67,16 +67,43 @@ Notice that width of the “gap” between adjacent pyramids is equal to the wid
 
 int main(void)
 {
-    string height;
+   int height;
+   do
+   {
+      height = get_int("Height: ");
+   } while (height < 1 || height > 8);
+   
+   int leftEmpty = height - 1;
+   int leftHash = 1;
+   int rightHash = 1;
+   string center = "  ";
 
-    do {
-        height = get_string("Height: ");
-        // Height = 1
-        // Loop
-        //   Print `height` number of '#'s.
-        //   Print "  ".
-        //   Print `height` number of "#"s.
-        //   Print "\n";
-        //   
-    } while (height < 1 || height > 8);
+   for (int i = 0; i < height; i++)
+   {
+      for (int j = 0; j < leftEmpty; j++)
+      {
+         printf(" ");
+      }
+
+      for (int k = 0; k < leftHash; k++)
+      {
+         printf("#");
+      }
+
+      printf("%s", center);
+
+      for (int x = 0; x < rightHash; x++)
+      {
+         printf("#");
+      }
+
+      printf("\n");
+
+      leftEmpty -= 1;
+      leftHash += 1;
+      rightHash += 1;
+   }
+
+   return 0;
 }
+
