@@ -12,9 +12,9 @@ Elements of Programming Interviews in Python, Introduction, Page 1
 
 def find_h_index(arr):
     arr = sorted(arr)
-    for i in range(1, len(arr)):
-        h_index = arr[-i]
-        if i == h_index:
+    for i in range(len(arr)):
+        h_index = arr[i]
+        if i == len(arr) - h_index:
             return h_index
 
 
