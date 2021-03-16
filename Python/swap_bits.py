@@ -3,7 +3,7 @@ A 64-bit integer can be viewed as an array of 64 bits, with the bit at index 0 c
 bit (LSB), and the bit at index 63 corresponding to the most significant bit (MSB). Implement code that takes as input
 a 64-bit integer and swaps the bits at indices i and j.
 
-Elements of Programming Interviews in Python, Primitive Types, Page 29
+Elements of Programming Interviews in Python, Primitive Types, Problem 4.2
 """
 
 
